@@ -12,7 +12,7 @@ X = []
 Y = []
 for idx, cat in enumerate(categories):
     files = glob.glob(root_dir + "/" + cat + "/*")
-    print("---", cat, "‚ğˆ—’†")
+    print("---", cat, "ã‚’å‡¦ç†ä¸­")
     for i, f in enumerate(files):
         img = load_img(f, target_size=(image_size,image_size))
         data = img_to_array(img)

@@ -7,7 +7,7 @@ from keras.preprocessing.image import load_img, img_to_array
 
 cam = cv2.VideoCapture(0)
 image_size = 32
-categories = ["ê‘ÇËÇÒÇ≤", "ê¬ÇËÇÒÇ≤"]
+categories = ["Ëµ§„Çä„Çì„Åî", "Èùí„Çä„Çì„Åî"]
 
 def main():
 
@@ -48,12 +48,12 @@ def main():
             print(pre)
             if pre[0][0] > 0.9:
                 print(categories[0])
-                text = 'Ç±ÇÍÇÕ' + categories[0]+ 'ÇæÇÊ'
+                text = '„Åì„Çå„ÅØ' + categories[0]+ '„Å†„Çà'
                 text = text.encode('utf-8')
                 jtalk(text)
             elif pre[0][1] > 0.9:
                 print(categories[1])
-                text = 'Ç±ÇÍÇÕ' + categories[1]+ 'ÇæÇÊ'
+                text = '„Åì„Çå„ÅØ' + categories[1]+ '„Å†„Çà'
                 text = text.encode('utf-8')
                 jtalk(text)
 
