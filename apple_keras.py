@@ -7,14 +7,14 @@ from keras.layers import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
 
 root_dir = "./image/"
-categories = ["red_apple", "green_apple"]
+categories = ["one", "two", "three"]
 nb_classes = len(categories)
 image_size = 32
 
 def main():
-    X_train, X_test, y_train, y_test = np.load("./image/apple.npy")
-    X_train = X_train.astype("float") / 256
-    X_test  = X_test.astype("float")  / 256
+    X_train, X_test, y_train, y_test = np.load("./image/three_check.npy")
+    X_train = X_train.astype("float") / 255
+    X_test  = X_test.astype("float")  / 255
     y_train = np_utils.to_categorical(y_train, nb_classes)
     y_test  = np_utils.to_categorical(y_test, nb_classes)
     model = model_train(X_train, y_train)
@@ -47,7 +47,7 @@ def build_model(in_shape):
 def model_train(X, y):
     model = build_model(X.shape[1:])
     history = model.fit(X, y, batch_size=32, nb_epoch=10, validation_split=0.1)
-    hdf5_file = "./image/apple-model.h5"
+    hdf5_file = "./image/three_check.h5"
     model.save_weights(hdf5_file)
     return model
 

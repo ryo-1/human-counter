@@ -7,7 +7,7 @@ from keras.preprocessing.image import load_img, img_to_array
 
 cam = cv2.VideoCapture(0)
 image_size = 32
-categories = ["赤りんご", "青りんご"]
+categories = ["一人", "二人","三人"]
 
 def main():
 
@@ -39,10 +39,10 @@ def main():
             in_data = img_to_array(img)
             X.append(in_data)
             X = np.array(X)
-            X  = X.astype("float")  / 256
+            X  = X.astype("float")  / 255
 
             model = apple.build_model(X.shape[1:])
-            model.load_weights("./image/apple-model.h5")
+            model.load_weights("./image/three_check.h5")
 
             pre = model.predict(X)
             print(pre)
