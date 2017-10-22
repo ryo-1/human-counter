@@ -1,5 +1,4 @@
-# https://github.com/fchollet/keras/blob/master/examples/cifar10_cnn.py
-
+# -*- coding: utf-8 -*-
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten

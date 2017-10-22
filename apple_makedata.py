@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import glob
 import numpy as np
 from sklearn import cross_validation
