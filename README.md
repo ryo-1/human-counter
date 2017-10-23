@@ -10,4 +10,4 @@
   git checkout -b 画像 origin/画像
 ④ remoteからpull 
   git pull origin 画像
-⑤画像追加して add して commit して origin 画像 へ push
+⑤ 画像追加して add して commit して origin 画像 へ push
