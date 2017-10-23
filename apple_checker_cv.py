@@ -9,7 +9,6 @@ image_size = 32
 categories = ["赤りんご", "青りんご"]
 
 def main():
-
 #    while(True):
 #        ret, frame = cam.read()
 #        cv2.imshow("Show FLAME Image", frame)
