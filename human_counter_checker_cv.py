@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 import apple_keras as apple
-import sys, os
 import numpy as np
-import subprocess
 import cv2
 from keras.preprocessing.image import load_img, img_to_array
 
@@ -10,20 +9,6 @@ image_size = 32
 categories = ["赤りんご", "青りんご"]
 
 def main():
-
-    def jtalk(t):
-        open_jtalk=['open_jtalk']
-        mech=['-x','/var/lib/mecab/dic/open-jtalk/naist-jdic']
-        htsvoice=['-m','/usr/share/hts-voice/mei/mei_happy.htsvoice']
-        speed=['-r','1.0']
-        outwav=['-ow','open_jtalk.wav']
-        cmd=open_jtalk+mech+htsvoice+speed+outwav
-        c = subprocess.Popen(cmd,stdin=subprocess.PIPE)
-        c.stdin.write(t)
-        c.stdin.close()
-        c.wait()
-        aplay = ['aplay','-q','open_jtalk.wav']
-        wr = subprocess.Popen(aplay)
 
     while(True):
         ret, frame = cam.read()
@@ -49,13 +34,11 @@ def main():
             if pre[0][0] > 0.9:
                 print(categories[0])
                 text = 'これは' + categories[0]+ 'だよ'
-                text = text.encode('utf-8')
-                jtalk(text)
+                print(text)
             elif pre[0][1] > 0.9:
                 print(categories[1])
                 text = 'これは' + categories[1]+ 'だよ'
-                text = text.encode('utf-8')
-                jtalk(text)
+                print(text)
 
         elif k == ord('q'):
             break
