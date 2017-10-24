@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
@@ -45,7 +46,25 @@ def build_model(in_shape):
 
 def model_train(X, y):
     model = build_model(X.shape[1:])
-    history = model.fit(X, y, batch_size=32, nb_epoch=10, validation_split=0.1)
+    history = model.fit(X, y, batch_size=32, nb_epoch=30, validation_split=0.1)
+
+    # 正答率描画
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
+    # loss描画
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
+
     hdf5_file = "./image/three_check.h5"
     model.save_weights(hdf5_file)
     return model
