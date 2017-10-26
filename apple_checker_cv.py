@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import apple_keras as apple
 import sys, os
 import numpy as np
