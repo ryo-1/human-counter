@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import apple_keras as apple
+import human_counter_keras as human_counter
 import numpy as np
 #import cv2
 from keras.preprocessing.image import load_img, img_to_array
@@ -26,7 +26,7 @@ def main():
             X = np.array(X)
             X  = X.astype("float")  / 255
 
-            model = apple.build_model(X.shape[1:])
+            model = human_counter.build_model(X.shape[1:])
             model.load_weights("./image/three_check.h5")
 
             pre = model.predict(X)
