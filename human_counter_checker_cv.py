@@ -18,7 +18,6 @@ def main():
 #        if k == ord('s'):
 #            cv2.imwrite("output.png", frame)
 #            cv2.imread("output.png")
-
             X = []
             img = load_img("./output.png", target_size=(image_size,image_size))
             in_data = img_to_array(img)

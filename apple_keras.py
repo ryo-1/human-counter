@@ -4,24 +4,24 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
-from keras.utils.vis_utils import plot_model
+from keras.utils.visualize_util import plot
 
 import matplotlib.pyplot as plt
 
 root_dir = "./image/"
-categories = ["one", "two", "three"]
+categories = ["red_apple", "green_apple"]
 nb_classes = len(categories)
 image_size = 32
 
 def main():
-    X_train, X_test, y_train, y_test = np.load("./image/three_check.npy")
+    X_train, X_test, y_train, y_test = np.load("./image/apple.npy")
     X_train = X_train.astype("float") / 255
     X_test  = X_test.astype("float")  / 255
     y_train = np_utils.to_categorical(y_train, nb_classes)
     y_test  = np_utils.to_categorical(y_test, nb_classes)
     model = model_train(X_train, y_train)
     model_eval(model, X_test, y_test)
-    plot_model(model, to_file="human_counter_model.png")
+    plot(model, to_file="apple_model.png")
 
 def build_model(in_shape):
     model = Sequential()
@@ -46,26 +46,8 @@ def build_model(in_shape):
 
 def model_train(X, y):
     model = build_model(X.shape[1:])
-    history = model.fit(X, y, batch_size=32, nb_epoch=30, validation_split=0.1)
-
-    # 正答率描画
- #   plt.plot(history.history['acc'])
- #   plt.plot(history.history['val_acc'])
- ##   plt.title('model accuracy')
- #   plt.ylabel('accuracy')
- #   plt.xlabel('epoch')
- #   plt.legend(['train', 'test'], loc='upper left')
- #   plt.show()
-    # loss描画
- #   plt.plot(history.history['loss'])
- ##   plt.plot(history.history['val_loss'])
-  #  plt.title('model loss')
- #   plt.ylabel('loss')
- #   plt.xlabel('epoch')
- #   plt.legend(['train', 'test'], loc='upper left')
- #   plt.show()
-
-    hdf5_file = "./image/three_check.h5"
+    history = model.fit(X, y, batch_size=32, nb_epoch=10, validation_split=0.1)
+    hdf5_file = "./image/apple-model.h5"
     model.save_weights(hdf5_file)
     plot_history(history)
     return model
