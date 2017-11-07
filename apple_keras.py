@@ -4,7 +4,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.utils import np_utils
-from keras.utils.visualize_util import plot
+from keras.utils.vis_utils import plot_model
 
 import matplotlib.pyplot as plt
 
@@ -21,7 +21,7 @@ def main():
     y_test  = np_utils.to_categorical(y_test, nb_classes)
     model = model_train(X_train, y_train)
     model_eval(model, X_test, y_test)
-    plot(model, to_file="apple_model.png")
+    plot_model(model, to_file="apple_model.png")
 
 def build_model(in_shape):
     model = Sequential()
